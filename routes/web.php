@@ -41,4 +41,7 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => ['aut
 	//Route::post('user/batch-delete', 'UserController@batch_delete');
 	Route::put('user/{id}/settings', 'UserController@settings');
 	Route::resource('user', 'UserController');
+
+	//alog
+	Route::get('alog', 'AlogController@index');
 });

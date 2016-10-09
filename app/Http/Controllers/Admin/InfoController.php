@@ -16,7 +16,7 @@ use App\Http\Controllers\Controller;
 
 use Redirect, DB;
 
-use App\Info;
+use App\Info, App\Alog;
 use IQuery;
 use ReflectionClass;
 
@@ -95,6 +95,11 @@ class InfoController extends Controller
         $info->value = $value;
 
         if($info->save()){
+
+            if($id == 0) $operate = Alog::OPERATE_CREATE;
+            else $operate = Alog::OPERATE_UPDATE;
+            Alog::log('Info', $operate, $info->key.'=>'.$info->value, $request->getClientIp());
+
             return Redirect::to('admin/info')->with('status', '保存成功');
         }else{
             return Redirect::back()->withErrors('保存失败');
@@ -155,11 +160,12 @@ class InfoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request, $id)
     {
         //
         $info = Info::find($id);
         if($info->delete()){
+            Alog::log('Info', Alog::OPERATE_DELETE, $info->key.'=>'.$info->value, $request->getClientIp());
             return Redirect::back();
         }else{
             return Redirect::back()->withErrors('删除失败');

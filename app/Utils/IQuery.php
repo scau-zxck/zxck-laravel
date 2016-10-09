@@ -23,7 +23,7 @@ class IQuery{
 			if($order != null && $order == 'desc') $query = $query->orderBy($sort, 'desc');
 			else $query = $query->orderBy($sort,'asc');
 		}else{
-			$query = $query->orderBy('id', 'asc');
+			$query = $query->orderBy('id', 'desc');
 		}
 		return $query;
 	}

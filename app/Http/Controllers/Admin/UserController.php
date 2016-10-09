@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
-use App\User;
+use App\User, App\Alog;
 use Redirect;
 use IQuery;
 
@@ -94,6 +94,10 @@ class UserController extends Controller
         $user->type = $type;
 
         if($user->save()){
+            if($id == 0) $operate = Alog::OPERATE_CREATE;
+            else $operate = Alog::OPERATE_UPDATE;
+            Alog::log('User', $operate, $user->name.'('.$user->email.')', $request->getClientIp());
+
             return Redirect::to('admin/user')->with('status', '保存成功');
         }else{
             return Redirect::back()->withErrors('保存失败');
@@ -152,10 +156,11 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request, $id)
     {
         $user = User::find($id);
         if($user->delete()){
+            Alog::log('User', Alog::OPERATE_DELETE, $user->name.'('.$user->email.')', $request->getClientIp());
             return Redirect::back()->with('status', '删除成功');
         }else{
             return Redirec::back()->withErrors();

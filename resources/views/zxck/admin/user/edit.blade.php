@@ -11,7 +11,7 @@ description:
 
 <ol class="breadcrumb">
   <li><a href="{{url('admin')}}">后台</a></li>
-  <li><a href="{{url('admin/info')}}">用户管理</a></li>
+  <li><a href="{{url('admin/user')}}">用户管理</a></li>
   <li class="active">@lang('common.edit')</li>
 </ol>
 

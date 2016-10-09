@@ -20,4 +20,9 @@ return [
     'settings' => '设置',
     'login' => '登录',
     'remember-me' => '记住我',
+    'time' => '时间',
+    'username' => '用户名',
+    'module' => '模块',
+    'content' => '内容',
+    'ip' => 'IP',
 ];
