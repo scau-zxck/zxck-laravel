@@ -5,7 +5,7 @@ date: 2016/9/30
 description:
 --}}
 
-@extends(config('theme', 'zxck').'.layouts.admin.content')
+@extends(config('app.theme').'.layouts.admin.content')
 
 @section('content')
 admin.index

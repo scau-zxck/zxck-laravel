@@ -130,7 +130,7 @@ description:
 
 @section('script')
     @parent
-    <script src="{{url(config('theme', 'zxck').'/js/common.js')}}"></script>
+    <script src="{{url(config('app.theme').'/js/common.js')}}"></script>
     <script src="//ajax.aspnetcdn.com/ajax/jquery.validate/1.14.0/jquery.validate.min.js"></script>
     <script src="//cdn.bootcss.com/layer/2.4/layer.min.js"></script>
     @include('layouts.jquery_validate')
@@ -145,7 +145,7 @@ description:
         layer.msg("{{$status}}");
     </script>
     @endif
-    <script src="{{url(config('theme', 'zxck').'/js/admin/content.js')}}"></script>
+    <script src="{{url(config('app.theme').'/js/admin/content.js')}}"></script>
     <script>
         $().ready(function() {
             AdminContent.init();

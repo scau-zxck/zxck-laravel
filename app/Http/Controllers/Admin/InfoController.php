@@ -32,7 +32,7 @@ class InfoController extends Controller
         //return "admin.info.index";
 
         //$infos = Info::orderBy('created_at', 'desc')->paginate(10);
-        //return view(config('app.theme', 'zxck').'.admin.info.index')->withInfos($infos);
+        //return view(config('app.theme').'.admin.info.index')->withInfos($infos);
 
         $request->flash();
 
