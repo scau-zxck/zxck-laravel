@@ -11,6 +11,12 @@ class UsersTableSeeder extends Seeder
      */
     public function run()
     {
-	    factory('App\User', 50)->create();
+	    //factory('App\User', 50)->create();
+	    $user = new App\User;
+	    $user->name = 'admin';
+	    $user->email = 'admin@'.config('app.theme').'.com';
+	    $user->password = bcrypt('123456');
+	    $user->type = App\User::TYPE_ADMIN;
+	    $user->save();
     }
 }
