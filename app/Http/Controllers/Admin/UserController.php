@@ -45,8 +45,6 @@ class UserController extends Controller
         }
 
         IQuery::ofOrder($users, $request);
-
-
         $users = $users->paginate(10);
 
         if($users == null || count($users) == 0){

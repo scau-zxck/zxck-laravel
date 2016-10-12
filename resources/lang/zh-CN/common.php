@@ -25,4 +25,6 @@ return [
     'module' => '模块',
     'content' => '内容',
     'ip' => 'IP',
+    'null' => '无',
+    'serial' => '编号',
 ];
