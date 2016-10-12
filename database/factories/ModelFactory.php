@@ -29,3 +29,12 @@ $factory->define(App\Info::class, function(Faker\Generator $faker){
 		'value' => str_random(10),
 	];
 });
+
+
+$factory->define(App\Category::class, function (Faker\Generator $faker) {
+    return [
+        'serial' => $faker->unique()->word,
+        'name' => $faker->word,
+        'value' => $faker->word,
+    ];
+});
